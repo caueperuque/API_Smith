@@ -1,6 +1,13 @@
+import StatusHTTP from './StatusHTTP';
+
 export type Product = {
-  id: 'fake';
-  name: 'fake';
-  price: 'fake';
-  orderId: 'fake';
+  id: number;
+  name: string;
+  price: string;
+  orderId?: number;
+};
+
+export type ProductResponse = {
+  status: keyof typeof StatusHTTP,
+  data: Product
 };

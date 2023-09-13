@@ -6,5 +6,4 @@ chai.use(chaiHttp);
 
 describe('POST /login', function () { 
   beforeEach(function () { sinon.restore(); });
-
 });
