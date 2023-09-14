@@ -1,4 +1,4 @@
-import { Product, ProductResponse } from '../types/Product';
+import { Product, ProductRequest, ProductResponse } from '../types/Product';
 import ProductModel from '../database/models/product.model';
 
 const getAllProducts = async (): Promise<Product[]> => {
@@ -9,12 +9,14 @@ const getAllProducts = async (): Promise<Product[]> => {
   return products.map((product) => product.toJSON());
 };
 
-const createProduct = async (dataProduct: Product): Promise<ProductResponse> => {
-  const product = (await ProductModel.create(dataProduct));
+const createProduct = async (dataProduct: Product): Promise<ProductResponse<ProductRequest>> => {
+  const product = await ProductModel.create(dataProduct);
 
   const { orderId, ...data } = product.toJSON();
 
-  if (!product) return ({ status: 'BAD_REQUEST', data: product });
+  // if (!orderId) return ({ status: 'BAD_REQUEST', data: { message: 'Order Id is required' } });
+
+  // if (!product) return ({ status: 'BAD_REQUEST', data: product });
 
   return { status: 'CREATED', data };
 };
