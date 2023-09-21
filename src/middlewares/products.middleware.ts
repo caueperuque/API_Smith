@@ -10,7 +10,7 @@ const validationInputName: RequestHandler = (req, res, next: NextFunction) => {
       return res.status(422).json({ message: '"name" must be a string' });
     }
 
-    if (name.length < 2) {
+    if (name.length <= 2) {
       return res.status(422).json({ message: '"name" length must be at least 3 characters long' });
     }
 
@@ -30,7 +30,7 @@ const validationInputPrice: RequestHandler = (req, res, next: NextFunction) => {
       return res.status(422).json({ message: '"price" must be a string' });
     }
 
-    if (price.length < 2) {
+    if (price.length <= 2) {
       return res.status(422).json({ message: '"price" length must be at least 3 characters long' });
     }
 
@@ -40,7 +40,24 @@ const validationInputPrice: RequestHandler = (req, res, next: NextFunction) => {
   }
 };
 
+const validationInputOrderId: RequestHandler = (req, res, next: NextFunction) => {
+  const { orderId } = req.body;
+
+  try {
+    if (!orderId) return res.status(400).json({ message: '"orderId" is required' });
+
+    // if (typeof Number(orderId) !== 'number') {
+    //   return res.status(422).json({ message: '"orderId" must be a number' });
+    // }
+
+    next();
+  } catch (err) {
+    return res.status(500).json('INTERNAL ERRORR');
+  }
+};
+
 export default {
   validationInputName,
   validationInputPrice,
+  validationInputOrderId,
 };
