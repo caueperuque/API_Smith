@@ -38,7 +38,6 @@ Após a inicialização dos contêineres, execute o seguinte comando para criar 
 
    ```bash
       npm run db:reset
-   Para popular o banco de dados.
    ```
 
    ```bash
