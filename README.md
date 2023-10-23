@@ -36,33 +36,35 @@ Certifique-se de parar o MySQL local se estiver usando a porta padrão (3306) ou
 
 Após a inicialização dos contêineres, execute o seguinte comando para criar o banco de dados, tabelas e populá-las:
 
-bash
-Copy code
-npm run db:reset
-Para entrar no container trybesmith_api, execute o seguinte comando:
+   ```bash
+      npm run db:reset
+   Para popular o banco de dados.
+   ```
 
-bash
-Copy code
-docker exec -it trybesmith_api bash
+   ```bash
+   docker exec -it trybesmith_api bash
+   ```
 Isso fornecerá acesso ao terminal interativo do container do aplicativo.
 
 Para visualizar os logs do Nodemon em seu terminal, siga estas etapas:
 
 a. Execute o seguinte comando para listar os contêineres ativos e pegar o ID do contêiner do trybesmith_api:
 
-bash
-Copy code
-docker ps
+   ```bash
+   docker ps
+   ```
 Anote o CONTAINER ID associado ao trybesmith_api.
 
 b. Agora você pode usar o ID do contêiner para visualizar os logs com o comando docker logs. Substitua <id_do_container> pelo ID do contêiner do `trybesmith_api:
 
-bash
-Copy code
-docker logs -f <id_do_container>
+   ```bash
+   docker logs -f <id_do_container>
+   ```
 Isso permitirá que você veja os logs do servidor com o Nodemon em tempo real.
 
-Observações
+##
+
+Observações:
 Este projeto não inclui uma interface de usuário (front-end), concentrando-se apenas nas funcionalidades e qualidade do código.
 A API deve ser desenvolvida na pasta ./src.
 Os testes unitários foram desenvolvidos na raiz do projeto, no diretório tests.
